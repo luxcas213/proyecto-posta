@@ -6,17 +6,14 @@ from stl import mesh # type: ignore
 def main_function(megagrafo: Tuple[List[List[float]], List[List[int]]]) -> None:
     
     def create_3d_object(coordinates):
-        # Create a numpy array from the coordinates
         vertices = np.array(coordinates)
 
-        # Create a mesh object
         mesh_object = mesh.Mesh(np.zeros(vertices.shape[0], dtype=mesh.Mesh.dtype))
         for i, vertex in enumerate(vertices):
             mesh_object.vectors[i] = vertex
         return mesh_object
 
     def export_stl(mesh_object, filename):
-        # Export the mesh object as an STL file
         output_file = Path.home() / "Downloads" / filename
         mesh_object.save(str(output_file))
 

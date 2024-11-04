@@ -99,7 +99,6 @@ if __name__ == "__main__":
     conecciones_yz = [[1, 3, 4], [0, 2, 4], [1, 3, 4], [2, 0, 4], [0, 1, 2, 3]]
     conecciones_xz = [[1, 3, 4], [0, 2, 4], [1, 3, 4], [2, 0, 4], [0, 1, 2, 3]]
 
-   
 
     megagrafo = crear_megagrafo(lado_xy, lado_yz, lado_xz, conecciones_xy, conecciones_yz, conecciones_xz)
     
