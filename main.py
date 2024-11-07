@@ -18,7 +18,7 @@ class Matrices(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_html():
-    with open("static/index.html") as f:
+    with open("static/html/modelo.html") as f:
         return HTMLResponse(content=f.read())
 
 

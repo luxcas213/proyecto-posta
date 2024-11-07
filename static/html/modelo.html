@@ -4,18 +4,22 @@
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>proyecto 4</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/css/modelo.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
     <header>
+        <i class='bx bx-log-out' ></i>
         <h1>Auto3Dgenerator</h1>
+        <a href="static/html/landing.html"><i  class='bx bx-home-alt-2'></i></a>
     </header>
     <div class="contenedor-principal">
         <div id="formulario">
             <label for="size"> Size de la matriz (n x n):</label>
             <input type="number" id="size" name="size" min="1" max="10" required>
             <div class="wrapper">
-                <button type="button" onclick="crearMatrices()">
+                <button class="btn"s type="button" onclick="crearMatrices()">
                     Crear Matrices
                 </button>
             </div>
@@ -34,27 +38,28 @@
             
             <div class="botones-container">
                 <div class="wrapper">
-                    <button type="button" onclick="enviarDatos()">
+                    <button class="btn" type="button"  onclick="enviarDatos()">
                         Enviar
                     </button>
                 </div>
                 <div class="wrapper">
-                    <button type="button" onclick="descargarSTL()">
+                    <button class="btn" type="button" onclick="descargarSTL()">
                         Descargar STL
                     </button>
                 </div>
             </div>
         </div>
-        
-        <div id="visor-stl">
-            <h2 class="textomedio">Visor STL</h2>
-            <div id="viewer"></div>
+        <div id="contenedor-visor">
+            <div id="visor-stl">
+                <h2 class="textomedio">Visor STL</h2>
+                <div id="viewer"></div>
+            </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="/static/script.js"></script>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>
