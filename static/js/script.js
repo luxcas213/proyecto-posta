@@ -1,5 +1,5 @@
 let isMouseDown = false;
-
+cargarprefabSTL();
 document.body.onmousedown = function () {
     isMouseDown = true;
 };
@@ -11,6 +11,10 @@ document.body.onmouseup = function () {
 
 function crearMatrices() {
     const size = parseInt(document.getElementById("size").value);
+    if(size>30){
+        alert("tamaño muy grande")
+        return;
+        }
     if (isNaN(size) || size <= 0) {
         alert("Por favor, ingresa un tamaño válido para la matriz.");
         return;
@@ -35,7 +39,7 @@ function verificarTamaños() {
     ];
 
     // Cambiar el estilo según la altura
-    if (alturas.some(altura => altura > 170)) {
+    if (alturas.some(altura => altura > 230)) {
         contenedorMatrices.style.flexDirection = 'column';
     } else {
         contenedorMatrices.style.flexDirection = 'row'; // Vuelve al estilo original si es necesario
@@ -61,6 +65,8 @@ function descargarSTL() {
 }
 
 function generarMatriz(matrizId, size) {
+    
+    
     const matrizDiv = document.getElementById(matrizId);
     matrizDiv.innerHTML = '';
 
@@ -143,6 +149,7 @@ function cargarSTL() {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
+    camera.position.set(10,10,10);
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(viewer.clientWidth, viewer.clientHeight);
     viewer.appendChild(renderer.domElement);
@@ -156,8 +163,37 @@ function cargarSTL() {
         const material = new THREE.MeshNormalMaterial();
         const mesh = new THREE.Mesh(geometry, material);
         scene.add(mesh);
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableZoom = true;
 
-        camera.position.z = 5;
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    });
+}
+function cargarprefabSTL() {
+    const viewer = document.getElementById('viewer');
+    viewer.innerHTML = '';
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
+    camera.position.set(10,10,10)
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+    viewer.appendChild(renderer.domElement);
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(1, 1, 1).normalize();
+    scene.add(light);
+
+    const loader = new THREE.STLLoader();
+    loader.load('/static/prefab.stl', function (geometry) {
+        const material = new THREE.MeshNormalMaterial();
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
 
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableZoom = true;
