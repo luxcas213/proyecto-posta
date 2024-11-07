@@ -398,3 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 static/output.stl
 *.stl
+*.stl
+static/output.stl
