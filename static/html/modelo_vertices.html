@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto3Dgenerator</title>
+    <link rel="stylesheet" href="/static/css/Modelo_vertices.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <a href="/"><i  class='bx bx-home-alt-2'></i></a>
+        <h1>Auto3Dgenerator</h1>
+        <i class='bx bx-log-out' ></i>
+    </header>
+
+    <div class="contenedor-principal">
+        <div id="formulario">
+            <h2 class="textomedio">Subir Imagen</h2>
+            <div class="input-group">
+                <input type="file" id="image-input" accept="image/*">
+                <button class="btn" onclick="enviarImagen()">Enviar</button>
+            </div>
+            <img id="image-preview" src="" alt="Vista previa de la imagen" style="display: none;">
+        </div>
+
+        <div id="contenedor-visor">
+            <div id="visor-stl">
+                <h2 class="textomedio">Visor STL</h2>
+                <div id="viewer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="/static/js/Modelo_Verices.js"></script>
+</body>
+</html>

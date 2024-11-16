@@ -16,11 +16,6 @@ class Matrices(BaseModel):
     matriz2: List[List[bool]]
     matriz3: List[List[bool]]
 
-@app.get("/", response_class=HTMLResponse)
-async def serve_html():
-    with open("static/html/modelo.html") as f:
-        return HTMLResponse(content=f.read())
-
 
 @app.post("/procesar")
 async def procesar(request: Matrices):
@@ -35,3 +30,18 @@ async def procesar(request: Matrices):
     resultado = "Matrices procesadas y STL generado."
     return {"resultado": resultado}
 
+@app.get("/", response_class=HTMLResponse)
+async def serve_html():
+    with open("static/html/landing.html") as f:
+        return HTMLResponse(content=f.read())
+
+
+@app.get("/modelo.html", response_class=HTMLResponse)
+async def serve_modelo():
+    with open("static/html/modelo.html") as f:
+        return HTMLResponse(content=f.read())
+
+@app.get("/modelo_vertices.html", response_class=HTMLResponse)
+async def serve_modelo():
+    with open("static/html/modelo_vertices.html") as f:
+        return HTMLResponse(content=f.read())
