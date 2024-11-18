@@ -13,6 +13,32 @@ document.getElementById('image-input').addEventListener('change', function(event
     }
 });
 
+
+function enviarImagen() {
+    const fileInput = document.getElementById('image-input');
+    const file = fileInput.files[0];
+    
+    if (!file) {
+        alert("Por favor, selecciona una imagen.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch('/procesarVertices', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.resultado); // Mensaje desde el backend
+        cargarSTL(); // Actualiza el visor STL
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
 function cargarSTL() {
     const viewer = document.getElementById('viewer');
     viewer.innerHTML = '';

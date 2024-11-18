@@ -5,6 +5,8 @@ from pydantic import BaseModel
 from typing import List
 import numpy as np
 from modeloCarpeta import modelo as fn
+from fastapi import FastAPI, File, UploadFile
+import shutil
 
 app = FastAPI()
 
@@ -29,6 +31,16 @@ async def procesar(request: Matrices):
 
     resultado = "Matrices procesadas y STL generado."
     return {"resultado": resultado}
+
+
+@app.post("/procesarVertices")
+async def procesar_vertices(file: UploadFile = File(...)):
+    output_path = f"static/{file.filename}"
+
+    with open(output_path, "wb") as f:
+        shutil.copyfileobj(file.file, f)
+
+    return {"resultado": "Archivo cargado y procesado correctamente."}
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_html():
