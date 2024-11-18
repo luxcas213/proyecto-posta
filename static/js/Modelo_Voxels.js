@@ -22,7 +22,7 @@ function crearMatrices() {
     generarMatriz('matriz1', size);
     generarMatriz('matriz2', size);
     generarMatriz('matriz3', size);
-    verificarTamaños(); // Llama a la función para verificar tamaños
+    verificarTamaños(); 
 }
 
 function verificarTamaños() {
@@ -31,18 +31,17 @@ function verificarTamaños() {
     const matriz2 = document.getElementById('matriz2');
     const matriz3 = document.getElementById('matriz3');
 
-    // Verificar las alturas de las matrices
     const alturas = [
         matriz1.offsetHeight,
         matriz2.offsetHeight,
         matriz3.offsetHeight,
     ];
 
-    // Cambiar el estilo según la altura
+
     if (alturas.some(altura => altura > 230)) {
         contenedorMatrices.style.flexDirection = 'column';
     } else {
-        contenedorMatrices.style.flexDirection = 'row'; // Vuelve al estilo original si es necesario
+        contenedorMatrices.style.flexDirection = 'row'; 
     }
 }
 function descargarSTL() {
