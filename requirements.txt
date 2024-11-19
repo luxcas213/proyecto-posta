@@ -4,3 +4,4 @@ numpy-stl
 fastapi
 uvicorn
 pydantic
+python-multipart

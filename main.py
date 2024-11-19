@@ -39,7 +39,7 @@ async def procesar_vertices(file: UploadFile = File(...)):
 
     with open(output_path, "wb") as f:
         shutil.copyfileobj(file.file, f)
-
+    
     return {"resultado": "Archivo cargado y procesado correctamente."}
 
 @app.get("/", response_class=HTMLResponse)
